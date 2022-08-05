@@ -1,0 +1,1240 @@
+\documentclass[10pt]{beamer}
+
+% Template predefined settings
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% Color Themes
+% \usecolortheme{wolverine}
+% \usecolortheme{beaver}
+% \usecolortheme{dolphin}
+% \usecolortheme{seagull}
+% \usecolortheme{seahorse}
+% \usecolortheme{rose}
+
+% Language and basic staff
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+
+% Formatting
+\usepackage[absolute,overlay]{textpos}
+\usepackage{bookmark}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{hyperref}
+\usepackage{multicol} % Multicols
+
+% Ident First Line
+\renewcommand{\indent}{\hspace*{2em}}
+
+% Math
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage[all,2cell]{xy}
+
+% Defining Theorems
+\usepackage{amsthm}
+
+% Numbered Theorems in Beamer
+\setbeamertemplate{theorems}[numbered]
+
+% Personalized Theorems
+\theoremstyle{plain}
+\newtheorem{defn}{Definição}[section]
+\newtheorem{teo}[defn]{Teorema} % usa mesmo contador da definição
+\newtheorem{lem}[defn]{Lema}
+\newtheorem{cor}[defn]{Corolário}
+\newtheorem{prop}[defn]{Proposição}
+\newtheorem{exerc}{Exercício}[section]
+\newtheorem{ex}[defn]{Exemplo}
+\newtheorem{rem}[defn]{Observação}
+\newtheorem{fat}[defn]{Fato}
+
+% Declarations
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+\graphicspath{{./figuras/}} % path for images
+
+% Insert an "E" for sinalizing that I need to write on blackboard
+% \tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+
+% Tikz Diagrams
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzset{temporal/.code args={<#1>#2#3#4}{%
+  \temporal<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}{\pgfkeysalso{#4}} % \pgfkeysalso doesn't change 
+the path}}
+
+  \tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+  }
+  
+\tikzstyle{highlight}=[red,ultra thick]
+
+\usetikzlibrary{mindmap,arrows,shapes.geometric}
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+\usetikzlibrary{positioning}
+
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzset{temporal/.code args={<#1>#2#3#4}{%
+  \temporal<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}{\pgfkeysalso{#4}} % \pgfkeysalso doesn't change 
+the path
+}}
+
+\tikzstyle{highlight}=[red,ultra thick]
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{tipo1} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text 
+centered, text width=2.5cm, draw=black, fill=red!40]
+\tikzstyle{startstopp} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text 
+centered, text width=2.5cm, draw=black, fill=red!10]
+\tikzstyle{tipo2} = [rectangle, rounded corners, minimum width=2cm, 
+minimum height=1cm, text centered, text width=2.5cm, draw=black, fill=blue!30]
+\tikzstyle{tipo3} = [rectangle, rounded corners, minimum width=2cm, 
+minimum height=1cm, text centered, text width=2.5cm, draw=black, fill=blue!10]
+\tikzstyle{tipo4} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text 
+centered, text width=2.5cm, draw=black, fill=orange!30]
+\tikzstyle{tipo5} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text 
+centered, text width=2.5cm, draw=black, fill=yellow!40]
+\tikzstyle{tipo6} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm, text 
+centered, text width=2.5cm, draw=black, fill=green!30]
+\tikzstyle{tipo7} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm, text 
+centered, text width=2.5cm, draw=black, fill=green!10]
+\tikzstyle{tipo8} = [rectangle, rounded corners, minimum width=4cm, minimum height=1cm, text 
+centered, text width=6cm, draw=black, fill=blue!30]
+\tikzstyle{tipo9} = [rectangle, rounded corners, minimum width=4cm, minimum height=1cm, text 
+centered, text width=6cm, draw=black, fill=green!30]
+\tikzstyle{tipo10} = [rectangle, rounded corners, minimum width=4cm, minimum height=1cm, text 
+centered, text width=5cm, draw=black, fill=yellow!40]
+\tikzstyle{arrow} = [thick,>=stealth]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Jogos Matemáticos - Aula 00}
+\subtitle{Fundamentos: Lógica, Conjuntos}
+% \date{\today}
+\date{}
+\author{Kaique Matias de Andrade Roberto}
+\institute{Administração - Ciências Atuariais - Ciências Contábeis - Ciências Econômicas \\
+$ $\\
+HECSA - Escola de Negócios \\ $ $ \\ FIAM-FAAM-FMU}
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{figuras/fmu.PNG}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Main
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+%%% Contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conteúdo}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents%[hideallsubsections]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vocabulário Matemático}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vocabulário Matemático}
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm]
+\node (kt) [tipo3] {\textbf{Definição}};
+\node (qf) [tipo10, xshift=6cm] {Termo usado para dar nomes aos objetos matemáticos};
+\draw [arrow] (kt) -- (qf);
+\draw [arrow] (qf) -- (kt);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vocabulário Matemático}
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm]
+\node (kt) [tipo4] {\textbf{Noção Primitiva}};
+\node (qf) [tipo10, xshift=6cm] {Objetos Matemáticos cuja definção e/ou existência são aceitas sem a necessidade de justificativas};
+\draw [arrow] (kt) -- (qf);
+\draw [arrow] (qf) -- (kt);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vocabulário Matemático}
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm]
+\node (kt) [tipo4] {\textbf{Axioma}};
+\node (qf) [tipo10, xshift=6cm] {Propriedades que envolvem as Noções Primitivos, aceitas sem a necessidade de prova ou justificativa};
+\draw [arrow] (kt) -- (qf);
+\draw [arrow] (qf) -- (kt);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vocabulário Matemático}
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm]
+\node (kt) [tipo1] {\textbf{Teorema} \\
+\textbf{Proposição} \\ \textbf{Corolário} \\ \textbf{Lema}};
+\node (qf) [tipo10, xshift=6cm] {Afirmações matemáticas que precisam de prova/demonstração};
+\draw [arrow] (kt) -- (qf);
+\draw [arrow] (qf) -- (kt);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vocabulário Matemático}
+\indent Em geral, $\mbox{Teorema}>\mbox{Proposição}>\mbox{Lema}$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vocabulário Matemático}
+\indent Em geral um Corolário é um resultado que segue como consequência imediata de um Teorema ou Proposição.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sentenças}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+\begin{defn}[Sentenças]
+\vfill\indent Uma \textbf{sentença} é uma oração declarativa que pode ser classificada como verdadeira ou falsa.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+    \indent Toda sentença apresenta três características obrigatórias:
+    \begin{enumerate}
+        \item sendo oração tem sujeito (por exemplo, um indivíduo ou objeto) e predicado (por exemplo, algo acontecendo com esse indivíduo ou objeto);
+        \item é declarativa (não exclamativa nem interrogativa);
+        \item tem um e somente um dos dois valores lógicos: ou é Verdadeira (V) ou é Falsa (F).
+    \end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+    \begin{block}{}
+     \textbf{P:} Vermelho, branco e azul são cores.
+    \end{block}
+    $ $
+\begin{itemize}
+    \item Tem sujeito e predicado.
+    \item É declarativa.
+    \item É Verdadeira ou Falsa.
+\end{itemize}
+$$$$
+\textbf{P} é sentença?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+    \begin{block}{}
+     \textbf{Q:} Hoje é segunda-feira?
+    \end{block}
+    $ $
+\begin{itemize}
+    \item Tem sujeito e predicado.
+    \item É declarativa.
+    \item É Verdadeira ou Falsa.
+\end{itemize}
+$$$$
+\textbf{Q} é sentença?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+    \begin{block}{}
+     \textbf{R:} Um, dois, três, quatro.
+    \end{block}
+    $ $
+\begin{itemize}
+    \item Tem sujeito e predicado.
+    \item É declarativa.
+    \item É Verdadeira ou Falsa.
+\end{itemize}
+$$$$
+\textbf{R} é sentença?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+    \begin{block}{}
+     \textbf{S:} Vá arrumar o seu quarto.
+    \end{block}
+    $ $
+\begin{itemize}
+    \item Tem sujeito e predicado.
+    \item É declarativa.
+    \item É Verdadeira ou Falsa.
+\end{itemize}
+$$$$
+\textbf{S} é sentença?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+    \begin{block}{}
+     \textbf{T:} Sete é maior que cinco.
+    \end{block}
+    $ $
+\begin{itemize}
+    \item Tem sujeito e predicado.
+    \item É declarativa.
+    \item É Verdadeira ou Falsa.
+\end{itemize}
+$$$$
+\textbf{T} é sentença?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sentenças}
+    \begin{block}{}
+     \textbf{U:} Quatro é um número negativo.
+    \end{block}
+    $ $
+\begin{itemize}
+    \item Tem sujeito e predicado.
+    \item É declarativa.
+    \item É Verdadeira ou Falsa.
+\end{itemize}
+$$$$
+\textbf{U} é sentença?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conectivos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \indent Usamos \textbf{conectivos} para produzir ou juntar sentenças.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \begin{defn}[Negação]
+        \vfill\indent Dada uma sentença $P$, a \textbf{negação de $P$}, notação $\neg P$, é a sentença que tem valor verdade oposto ao de $P$.
+        \begin{center}
+            \begin{tabular}{|c|c|}
+    \hline
+    $P$ & $\neg P$ \\
+    \hline
+    V & F \\
+    \hline
+    F & V \\
+    \hline
+\end{tabular}
+        \end{center}
+    \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+        \begin{block}{}
+     \textbf{P:} Setembro é um mês par.
+    \end{block}
+    $$$$
+    $\neg P:$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+        \begin{block}{}
+     \textbf{Q:} $2+3=7$.
+    \end{block}
+    $$$$
+    $\neg Q:$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+        \begin{block}{}
+     \textbf{R:} Quatro é múltiplo de dois.
+    \end{block}
+    $$$$
+    $\neg R:$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+        \begin{defn}[Conjunção]
+        \vfill\indent Dadas sentença $P$ e $Q$, a \textbf{conjunção $P\wedge Q$} ("$P$ e $Q$") é a sentença satisfazendo a seguinte tabela verdade:
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+    \hline
+    $P$ & $Q$  & $P\wedge Q$\\
+    \hline
+    V & V & V \\
+    \hline
+    V & F & F \\
+    \hline
+    F & V & F \\
+    \hline
+    F & F & F \\
+    \hline
+\end{tabular}
+        \end{center}
+    \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+        \begin{defn}[Disjunção]
+        \vfill\indent Dadas sentença $P$ e $Q$, a \textbf{disjunção $P\vee Q$} ("$P$ ou $Q$") é a sentença satisfazendo a seguinte tabela verdade:
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+    \hline
+    $P$ & $Q$  & $P\vee Q$\\
+    \hline
+    V & V & V \\
+    \hline
+    V & F & V \\
+    \hline
+    F & V & V \\
+    \hline
+    F & F & F \\
+    \hline
+\end{tabular}
+        \end{center}
+    \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+            \begin{block}{}
+     \textbf{P:} $2+3=5$. \\
+     \textbf{Q:} $5>4$.
+    \end{block}
+    $$$$
+    $P\wedge Q:$
+    $$$$
+    $$$$
+    $P\vee Q:$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \begin{block}{}
+     \textbf{P:} $2+2=5$. \\
+     \textbf{Q:} $17$ é um número primo. \\
+     \textbf{R:} $1<3$.
+    \end{block}  
+    $$$$
+    $P\wedge(Q\vee R):$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+        \begin{defn}[Implicação]
+        \vfill\indent Dadas sentença $P$ e $Q$, a \textbf{implicação $P\rightarrow Q$} ("$P$ implica $Q$") é a sentença satisfazendo a seguinte tabela verdade:
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+    \hline
+    $P$ & $Q$  & $P\rightarrow Q$\\
+    \hline
+    V & V & V \\
+    \hline
+    V & F & F \\
+    \hline
+    F & V & V \\
+    \hline
+    F & F & V \\
+    \hline
+\end{tabular}
+        \end{center}
+    \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \indent São sinônimos de $P\rightarrow Q$:
+    \begin{itemize}
+        \item $P$ implica $Q$;
+        \item se $P$ então $Q$;
+        \item $P$ é condição suficiente para $Q$;
+        \item $Q$ é condição necessária para $P$.
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+        \begin{defn}[Equivalência]
+        \vfill\indent Dadas sentença $P$ e $Q$, a \textbf{equivalência $P\leftrightarrow Q$} ("$P$ se e só se $Q$") é a sentença satisfazendo a seguinte tabela verdade:
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+    \hline
+    $P$ & $Q$  & $P\leftrightarrow Q$\\
+    \hline
+    V & V & V \\
+    \hline
+    V & F & F \\
+    \hline
+    F & V & F \\
+    \hline
+    F & F & V \\
+    \hline
+\end{tabular}
+        \end{center}
+    \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \indent São sinônimos de $P\leftrightarrow Q$:
+    \begin{itemize}
+        \item $P$ é equivalente a $Q$;
+        \item $P$ se e só se $Q$;
+        \item $P$ é condição necessária e suficiente para $Q$;
+        \item $Q$ é condição necessária e suficiente para $P$;
+        \item Se $P$ então $Q$ e reciprocamente.
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \begin{block}{}
+     \textbf{P:} $2+3=5$. \\
+     \textbf{Q:} $5>4$.
+    \end{block}
+    $$$$
+    $P\rightarrow Q:$
+    $$$$
+    $$$$
+    $P\leftrightarrow Q:$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \begin{block}{}
+     \textbf{P:} $2+2=5$. \\
+     \textbf{Q:} $17$ é um número primo. \\
+     \textbf{R:} $1<3$.
+    \end{block}  
+    $$$$
+    $(P\vee Q)\rightarrow R:$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \begin{block}{}
+     \textbf{P:} $2+2=5$. \\
+     \textbf{Q:} $17$ é um número primo. \\
+     \textbf{R:} $1<3$.
+    \end{block}  
+    $$$$
+    $P\leftrightarrow(\neg Q\rightarrow R):$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conectivos}
+    \begin{block}{}
+     \textbf{P:} $2+2=5$. \\
+     \textbf{Q:} $17$ é um número primo. \\
+     \textbf{R:} $1<3$.
+    \end{block}  
+    $$$$
+    $(P\rightarrow \neg Q)\wedge(Q\rightarrow R):$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantificadores}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \indent Há expressões como
+    $$x+1=2;\,y\ge3;\,z\ne0$$
+    que contém \textbf{variáveis} e cujo valor lógico (V ou F) depende do valor atribuído à variável.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \indent Orações que contém variáveis são chamadas \textbf{sentenças abertas}. Tais orações \textbf{não são} sentenças, pois seu valor lógico (V ou F) depende do valor dado às variáveis.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \indent Há duas maneiras de transformar sentenças abertas em sentenças:
+    \begin{enumerate}
+        \item atribuir valores às variáveis;
+        \item utilizar quantificadores.
+    \end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \begin{defn}[Quantificador Universal] 
+    \vfill\indent O \textbf{quantificador universal} $\forall$ transforma uma sentença aberta $P(x)$ em uma sentença do tipo $\forall\,x\,P(x)$ ("para todo $x$ vale $P(x)$"). A sentença $\forall\,x\,P(x)$ é verdadeira se \emph{para todo} $x$ (em um universo fixado), a sentença $P(x)$ for verdadeira.
+    \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \indent Sinônimos de $\forall\,x\,P(x)$:
+    \begin{itemize}
+        \item qualquer que seja $x$ vale $P(x)$;
+        \item para todo $x$ vale $P(x)$;
+        \item para cada $x$ vale $P(x)$.
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \begin{defn}[Quantificador Existencial]
+    \vfill\indent O \textbf{quantificador existencial} $\exists$ transforma uma sentença aberta $P(x)$ em uma sentença do tipo $\exists\,x\,P(x)$ ("existe $x$ tal que $P(x)$"). A sentença $\exists\,x\,P(x)$ é verdadeira se \emph{existe algum} $x$ (em um universo fixado) tal que a sentença $P(x)$ for verdadeira.
+    \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \indent Sinônimos de $\exists\,x\,P(x)$:
+    \begin{itemize}
+        \item existe $x$ tal que vale $P(x)$;
+        \item existe um $x$ tal que vale $P(x)$;
+        \item existe ao menos um $x$ tal que vale $P(x)$.
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \begin{block}{}
+     \textbf{P:} O mês $x$ tem 31 dias.
+    \end{block}
+    $$$$
+    $\forall\,x\,P(x):$
+    $$$$
+    $$$$
+    $\exists\,x\,P(x):$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quantificadores}
+    \begin{block}{}
+     \textbf{Q:} $x+1=7$.
+    \end{block}
+    $$$$
+    $\forall\,x\,Q(x):$
+    $$$$
+    $$$$
+    $\exists\,x\,Q(x):$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Equivalência Lógica}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Equivalência Lógica}
+ \begin{defn}[Equivalência Lógica]
+ \vfill\indent Duas sentenças $P$ e $Q$ são \textbf{logicamente equivalentes} quando $P$ e $Q$ têm sempre o mesmo valor lógico, isto é, $P$ e $Q$ tem a mesma tabela-verdade. Se este é o caso, escreveremos $P\equiv Q$.
+ \end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Equivalência Lógica}
+ \begin{ex}
+ \vfill\indent Mostre as equivalências lógicas:
+ \begin{enumerate}[a-]
+     \item $P\equiv\neg\neg P$;
+     
+     \item $P\wedge Q\equiv Q\wedge P$;
+     
+     \item $P\rightarrow Q\equiv\neg Q\rightarrow\neg P$.
+ \end{enumerate}
+ \end{ex}
+ \tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+% \begin{frame}{Equivalência Lógica}
+%     \begin{center}
+%     \begin{tabular}{|c|c|c|}
+%     \hline
+%     $P$ & $\neg P$  & $\neg \neg P$\\
+%     \hline
+%     V & F &  V\\
+%     \hline
+%     V & F &  V\\
+%     \hline
+%     F & V &  F\\
+%     \hline
+%     F & V & F \\
+%     \hline
+% \end{tabular}
+% \end{center}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Equivalência Lógica}
+% \begin{multicols}{2}
+%     \begin{center}
+%     \begin{tabular}{|c|c|c|}
+%     \hline
+%     $P$ & $Q$  & $P\wedge Q$\\
+%     \hline
+%     V & V & V \\
+%     \hline
+%     V & F & F \\
+%     \hline
+%     F & V & F \\
+%     \hline
+%     F & F & F \\
+%     \hline
+% \end{tabular}
+% \end{center}
+
+%         \begin{center}
+%     \begin{tabular}{|c|c|c|}
+%     \hline
+%     $Q$ & $P$  & $Q\wedge P$\\
+%     \hline
+%     V & V &  \\
+%     \hline
+%     V & F &  \\
+%     \hline
+%     F & V &  \\
+%     \hline
+%     F & F &  \\
+%     \hline
+% \end{tabular}
+% \end{center}
+% \end{multicols}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Equivalência Lógica}
+%     \begin{center}
+%     \begin{tabular}{|c|c|c|c|c|c|}
+%     \hline
+%     $P$ & $Q$ & $\neg Q$ & $\neg P$ & $P\rightarrow Q$ & $\neg Q\rightarrow\neg P$ \\
+%     \hline
+%     V & V & F & F & & \\
+%     \hline
+%     V & F & V & F & & \\
+%     \hline
+%     F & V & F & V & & \\
+%     \hline
+%     F & F & V & V & & \\
+%     \hline
+% \end{tabular}
+% \end{center}
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{O que é uma Demonstração?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent Essencialmente, todos os resultados em matemática (ou seja, os teoremas, proposições, lemas e corolários) são da forma
+ $$\mbox{\textbf{hipótese(s) implica(m) tese}}.$$ 
+ Dito de outra maneira, os resultados são da forma: partindo de alguns pressupostos (\textbf{hipóteses}) posso concluir a \textbf{tese}.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent Quais são estes pressupostos? Eles podem estar explicitamente escritos no enunciado do resultado ou subentendidos. Por exemplo, não vamos escrever toda a hora os axiomas da teoria que estamos estudando. Eles são automaticamente assumidos como hipóteses.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent Resultados provados anteriormente também podem ser assumidos como hipóteses. (A menos que haja menção explícita de que não devam ser usados!)
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent O \textbf{processo de demonstrar} um resultado basicamente é partir dessas hipóteses e, mediante raciocínios elementares, ir obtendo conclusões intermediárias, até chegar à conclusão desejada.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent Uma \textbf{demonstração} é uma lista de evidências de que a afirmação do teorema é verdadeira.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent Note que, por mais que os termos "raciocínio elementar", "conclusão intermediária", "lista de evidência" sejam até certo ponto auto explicativos, eles à rigor precisariam de uma definição formal na linguagem que estamos usando (seja ela por exemplo, a da Teoria dos Conjuntos ou da Lógica de Primeira Ordem).
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent A formalização de tudo isso foge (e muito) do escopo deste curso. Vamos então, adotar uma perspectiva compatível com os nossos interesses, e descrever (de maneira "ingênua") algumas técnicas que usaremos para realizar demonstrações conforme elas forem surgindo durante o curso.
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{O que é uma Demonstração?}
+%  \indent Até agora, a única maneira que usamos para demonstrar "coisas" é o que chamo de "demonstração direta", que consiste em obter a tese "martelando" as hipóteses.
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{O que é uma Demonstração?}
+ \indent Dentre os vários métodos de demonstração, destacam-se os três abaixo:
+ \begin{itemize}
+     \item Demonstração direta;
+     \item Demonstração por Absurdo;
+     \item Demonstração por Contrapositiva;
+     \item Demonstração por Indução Finita.
+ \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conjunto}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\indent Na Teoria dos Conjuntos três noções são aceitas sem definição, isto é, são consideradas \textbf{noções primitivas}:
+\begin{itemize}
+    \item Conjunto;
+    \item Elemento;
+    \item Pertinência entre Elemento e Conjunto.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\indent São sinônimos de Conjunto:
+\begin{itemize}
+    \item Agrupamento;
+    \item Coleção;
+    \item Família.
+\end{itemize}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{ex}
+ \begin{itemize}
+    \item O conjunto $V$ das vogais:
+    $$V=\{a,e,i,o,u\}.$$
+\end{itemize}
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+    \item O conjunto $f$ dos dias do final de semana:
+    $$f=\{\mbox{sábado, domingo}\}.$$
+\end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+ \indent É comum descrever um conjunto por uma propriedade que caracteriza \textbf{todos} os seus elementos:
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{ex}
+ \begin{itemize}
+     \item $A=\{z:z\mbox{ é dia do final de semana}\}=\{\mbox{sábado, domingo}\}$;
+ \end{itemize}
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+     \item $x=\{E:E\mbox{ é estado da região sudeste}\}=
+     \{\mbox{São Paulo, Minas Gerais, Rio de Janeiro, Espírito santo}\}$.
+ \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\indent Escreveremos "$x\in A$" para indicar que "$x$ é um elemento do conjunto $A$". Escreveremos "$x\notin A$" para indicar que "$x$ não é um elemento do conjunto $A$".
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{ex}
+ \begin{itemize}
+     \item $\mbox{Corinthians}\in\{x:x\mbox{ é time que tem Mundial}\}$;
+ \end{itemize}
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+     \item $\mbox{Palmeiras}\notin\{x:x\mbox{ é time que tem Mundial}\}$.
+ \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+     \item $0\in\{0,1,2,3,4,5,6,7,8\}$.
+ \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+     \item $\{2\}\in\{1,\{2\}\}$.
+ \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{defn}[Axioma do Vazio]
+\vfill\indent Chama-se \textbf{conjunto vazio}, notação $\emptyset$, aquele que não possui elementos. A existência do conjunto vazio é um dos Axiomas da Teoria dos Conjuntos (chamado \textbf{Axioma do Vazio}).
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{ex}
+ \begin{itemize}
+     \item $\{x:x\ne x\}=\emptyset$;
+     \item $\{z:z\mbox{ é ímpar e múltiplo de }2\}=\emptyset$;
+     \item $\{w:w<0\mbox{ e }w>0\}=\emptyset$.
+ \end{itemize}
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{defn}[Subconjunto]
+\vfill\indent Um conjunto $A$ é \textbf{subconjunto} de $B$ se e só se todo elemento de $A$ for elemento de $B$. Se este for o caso, denotamos $A\subseteq B$. Em símbolos,
+$$A\subseteq B\mbox{ se e só se }\forall\,x(x\in A\rightarrow x\in B).$$
+\end{defn}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{ex}
+ \begin{itemize}
+     \item $\{a\}\subseteq\{a,b\}$;
+ \end{itemize}
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+     \item $\{2,4\}\subseteq\{x:x\mbox{ é inteiro par}\}$;
+ \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+     \item $\{a\}\subseteq\{a\}$ mas $\{a\}\notin\{a\}$;
+ \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{block}{}
+ \begin{itemize}
+     \item $\{a\}\subseteq\{a,\{a\}\}$ e $\{a\}\in\{a,\{a\}\}$.
+ \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{defn}[Axioma da Extensionalidade]
+\vfill\indent Dados conjuntos $A$ e $B$, vale que $A=B$ se e só se $A\subseteq B$ e $B\subseteq A$.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{lem}[Propriedades da Inclusão]
+\vfill\indent Sejam $A,B$ e $C$ conjuntos. Valem as seguintes propriedades:
+\begin{enumerate}[i -]
+    \item $\emptyset\subseteq A$;
+    \item $A\subseteq A$;
+    \item Se $A\subseteq B$ e $B\subseteq C$ então $A\subseteq C$.
+\end{enumerate}
+\end{lem}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{defn}[Conjunto das Partes]
+\vfill\indent Dado um conjunto $A$ chama-se \textbf{conjunto das partes de $A$}, notação $\mathcal P(A)$, aquele que é formado por todos os subconjuntos de $A$.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\indent Em símbolos,
+$$X\in\mathcal P(A)\mbox{ se e só se }X\subseteq A.$$
+Ou ainda,
+$$\mathcal P(A)=\{X:X\subseteq A\}.$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjunto}
+\begin{ex}
+\indent Vamos escrever o conjunto das partes para os conjuntos abaixo:
+ \begin{itemize}
+     \item $A=\{a,b\}$.
+     \item $B=\{a,b,c\}$.
+ \end{itemize}
+\end{ex}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{União, Interseção, Diferença}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{defn}[União]
+ \vfill\indent Dados dois conjuntos $A$ e $B$, chama-se \textbf{união (ou reunião)} de $A$ e $B$, notação $A\cup B$, o conjunto formado pelos elementos que pertencem a $A$ ou a $B$. Em símbolos,
+ $$x\in A\cup B\mbox{ se e só se }(x\in A)\vee(x\in B).$$
+\end{defn}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{defn}[Interseção]
+ \vfill\indent Dados dois conjuntos $A$ e $B$, chama-se \textbf{interseção (ou intersecção)} de $A$ e $B$, notação $A\cap B$, o conjunto formado pelos elementos que pertencem a $A$ ou a $B$. Em símbolos,
+ $$x\in A\cap B\mbox{ se e só se }(x\in A)\wedge(x\in B).$$
+\end{defn}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{ex}
+\begin{itemize}
+    \item $\{a,b\}\cup\{c,d\}=\{a,b,c,d\}$;
+    \item $\{a,b\}\cap\{c,d\}=\emptyset$;
+\end{itemize} 
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{block}{}
+\begin{itemize}
+    \item $\{a,b,d\}\cup\{c,d,e\}=\{a,b,c,d,e\}$;
+    \item $\{a,b,d\}\cap\{c,d,e\}=\{d\}$.
+\end{itemize} 
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{lem}[Propriedades da União]
+\vfill\indent Sejam $A,B,C$ três conjuntos quaisquer. Valem as seguintes propriedades:
+ \begin{enumerate}[i -]
+     \item $A\cup A=A$;
+     \item $A\cup\emptyset=A$;
+     \item $A\cup B=B\cup A$;
+     \item $A\cup(B\cup C)=(A\cup B)\cup C$.
+ \end{enumerate}
+\end{lem}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{lem}[Propriedades da Interseção]
+ \vfill\indent Sejam $A,B,C$ três conjuntos quaisquer. Valem as seguintes propriedades:
+ \begin{enumerate}[i -]
+     \item $A\cap A=A$;
+     \item Se $A\subseteq B$ então $A\cap B=A$;
+     \item $A\cap B=B\cap A$;
+     \item $A\cap(B\cap C)=(A\cap B)\cap C$.
+ \end{enumerate}
+\end{lem}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{defn}
+ \vfill\indent Diremos que dois conjuntos $A$ e $B$ são \textbf{disjuntos} se $A\cap B=\emptyset$.
+\end{defn}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{defn}[Diferença]
+ \vfill\indent Dados dois conjuntos $A$ e $B$, chama-se \textbf{diferença} de $A$ e $B$, notação $A\setminus B$, o conjunto formado pelos elementos que pertencem a $A$ e não pertencem à $B$. Em símbolos,
+ $$x\in A\setminus B\mbox{ se e só se }(x\in A)\wedge(x\notin B).$$
+\end{defn}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{União, Interseção, Diferença}
+\begin{lem}[Propriedades da Diferença]
+\vfill\indent Sejam $A,B,C$ três conjuntos quaisquer com $B,C\subseteq A$. Valem as seguintes propriedades:
+\begin{enumerate}
+    \item $A\setminus A=\emptyset$ e $A\setminus\emptyset=A$.
+    \item $B\cup(A\setminus B)=A$ e $B\cap(A\setminus B)=\emptyset$.
+    \item $A\setminus(A\setminus B)=B$.
+    \item $A\setminus(B\cap C)=(A\setminus B)\cup(A\setminus C)$.
+    \item $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$.
+\end{enumerate}
+\end{lem}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conjuntos Numéricos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjuntos Numéricos}
+ \indent Vamos apresentar rapidamente os principais conjuntos numéricos, em uma perspectiva "ingênua".
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjuntos Numéricos}
+ \indent O conjunto dos \textbf{números naturais} é o conjunto
+ $$\mathbb N:=\{0,1,2,...\}$$
+ e o conjunto dos \textbf{números inteiros} é o conjunto
+ $$\mathbb Z:=\{...,-3,-2,-1,0,1,2,3,...\}$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjuntos Numéricos}
+ \indent Os \textbf{números racionais} são os números da forma $\frac{a}{b}$, sendo $a$ e $b$ inteiros e $b\ne0$. Em símbolos
+ $$\mathbb Q:=\left\lbrace\dfrac{a}{b}:a,b\in\mathbb Z,\,b\ne0\right\rbrace.$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjuntos Numéricos}
+ \indent Sejam $\frac{a}{b},\frac{c}{d}$ dois racionais quaisquer. A \textbf{soma} e o \textbf{produto} destes racionais são obtidos da seguinte forma:
+ \begin{align*}
+     \dfrac{a}{b}+\dfrac{c}{d}&=\dfrac{ad+bc}{bd} \\
+     \dfrac{a}{b}\cdot\dfrac{c}{d}&=\dfrac{ab}{cd}
+ \end{align*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjuntos Numéricos}
+ \indent Os \textbf{números reais} $\mathbb R$ é o conjunto formado por números racionais e irracionais.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conjuntos Numéricos}
+ \indent Por exemplo, os números $\sqrt{2},\sqrt{3},\pi$ são números reais que não são racionais (não podem ser escritos no formato $\frac{a}{b}$, $a,b\in\mathbb Z$, $b\ne0$).
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Comentários Finais e Referências}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais e Referências}
+\indent Em resumo, na aula de hoje nós:
+\begin{itemize}
+    \item aprendemos alguns conceitos do vocabulário matemático;
+    \item recapitulamos conceitos básicos de lógica (sentenças, conectivos, quantificadores, equivalência lógica);
+    \item tivemos um primeiro contato com a ideia de demonstração;
+    \item recapitulamos conceitos básicos da teoria dos conjuntos (conjunto, subconjunto, partes, união, intersecção, diferença).
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais e Referências}
+\indent Na próximas aula nós vamos focar em:
+\begin{itemize}
+    \item reconhecer o sistema de coordenadas cartesianas;
+    \item plano cartesiano;
+    \item desenvolver o conceito de função.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais e Referências}
+ \begin{center}
+  \includegraphics[width=0.43\linewidth]{fme-vol01.jpg}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais e Referências}
+ \begin{center}
+  \includegraphics[width=0.39\linewidth]{figuras/smullyan-dama.PNG}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais e Referências}
+ \begin{block}{A Linguagem Matemática - artigo do Professor Ricardo Bianconi}
+ \vfill\indent Nesse material, o professor Bianconi explica em mais detalhes como lidar com o "alfabeto matemático". Aos interessados, confira o link \url{https://www.ime.usp.br/~bianconi/recursos/mat.pdf}.
+ \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais e Referências}
+ \begin{center}
+  \includegraphics[width=0.43\linewidth]{figuras/construc-num.PNG}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bons Estudos!}
+ \begin{center}
+  \includegraphics[width=0.64\linewidth]{figuras/cafe.jpeg}
+ \end{center}
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[allowframebreaks]{References}
+
+%   \bibliography{demo}
+%   \bibliographystyle{abbrv}
+
+% \end{frame}
+
+\end{document}
